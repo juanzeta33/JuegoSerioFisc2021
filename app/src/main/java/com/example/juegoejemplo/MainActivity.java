@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.juegoejemplo.Responses.Estudiante;
+import com.example.juegoejemplo.Entidades.Estudiante;
 import com.example.juegoejemplo.Services.ApiService;
 
 import retrofit2.Call;
@@ -60,5 +60,9 @@ public class MainActivity extends AppCompatActivity {
         }catch (Exception e){
             int x = 1;
         }
+    }
+
+    public void Registrar(View v){
+        startActivity(new Intent(getApplicationContext(),RegistroActivity.class));
     }
 }

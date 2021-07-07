@@ -1,4 +1,4 @@
-package com.example.juegoejemplo.Responses;
+package com.example.juegoejemplo.Entidades;
 
 public class Estudiante {
     private String nombre_completo;
@@ -6,6 +6,7 @@ public class Estudiante {
     private String edad;
     private String facultad;
     private String email;
+    private String password;
     private String id;
 
     public String getNombre_completo() {
@@ -54,5 +55,13 @@ public class Estudiante {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

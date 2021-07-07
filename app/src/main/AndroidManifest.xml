@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JuegoEjemplo"
         android:usesCleartextTraffic="true">
-        <activity android:name=".JuegosActivity"></activity>
+        <activity android:name=".RegistroActivity"></activity>
+        <activity android:name=".JuegosActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
