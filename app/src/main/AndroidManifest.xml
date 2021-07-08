@@ -12,14 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JuegoEjemplo"
         android:usesCleartextTraffic="true">
-        <activity android:name=".RegistroActivity"></activity>
-        <activity android:name=".JuegosActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".PartidaActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".RegistroActivity" />
+        <activity android:name=".JuegosActivity" />
+        <activity android:name=".MainActivity">
+
         </activity>
     </application>
 

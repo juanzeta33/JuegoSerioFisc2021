@@ -2,6 +2,7 @@ package com.example.juegoejemplo.Services;
 
 import com.example.juegoejemplo.Entidades.Juego;
 import com.example.juegoejemplo.Entidades.Estudiante;
+import com.example.juegoejemplo.Entidades.Preguntas;
 import com.example.juegoejemplo.Responses.Facultad;
 
 import java.util.List;
@@ -27,4 +28,7 @@ public interface ApiInterface {
 
     @POST("api.php?ep=estudiantesSave")
     Call<Integer> postRegistrarEstudiante(@Body Estudiante estudiante);
+
+    @GET("api.php?ep=preguntas")
+    Call<List<Preguntas>> getPreguntas();
 }
