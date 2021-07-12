@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">JuegoEjemplo</string>
+    <integer name="dbVersion">1</integer>
 </resources>
