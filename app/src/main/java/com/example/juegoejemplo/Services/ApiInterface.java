@@ -3,6 +3,7 @@ package com.example.juegoejemplo.Services;
 import com.example.juegoejemplo.Entidades.Juego;
 import com.example.juegoejemplo.Entidades.Estudiante;
 import com.example.juegoejemplo.Entidades.Preguntas;
+import com.example.juegoejemplo.Requests.PartidaRequest;
 import com.example.juegoejemplo.Responses.Facultad;
 
 import java.util.List;
@@ -28,6 +29,9 @@ public interface ApiInterface {
 
     @POST("api.php?ep=estudiantesSave")
     Call<Integer> postRegistrarEstudiante(@Body Estudiante estudiante);
+
+    @POST("api.php?ep=partidaSave")
+    Call<Integer> postRegistrarPartida(@Body PartidaRequest partida);
 
     @GET("api.php?ep=preguntas")
     Call<List<Preguntas>> getPreguntas();

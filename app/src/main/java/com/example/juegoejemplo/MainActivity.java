@@ -8,7 +8,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.juegoejemplo.Datos.DbProccess;
 import com.example.juegoejemplo.Entidades.Estudiante;
+import com.example.juegoejemplo.Entidades.Usuarios;
 import com.example.juegoejemplo.Services.ApiService;
 
 import retrofit2.Call;
@@ -18,6 +20,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     EditText txtUser, txtPass;
+    DbProccess _db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +28,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         InicializarControles();
+
+        _db = new DbProccess(getApplicationContext());
+
+        ValidarSession();
+
+    }
+
+    private void ValidarSession() {
+        Usuarios user = _db.ObtenerUsuarioSession();
+        if (user != null){
+            startActivity(new Intent(getApplicationContext(),JuegosActivity.class));
+        }
     }
 
     private void InicializarControles() {
@@ -44,6 +59,17 @@ public class MainActivity extends AppCompatActivity {
                     if (response.isSuccessful()){
                         Estudiante estudiante = response.body();
                         if (estudiante != null){
+
+                            Usuarios user =
+                                    new Usuarios(
+                                            Integer.parseInt(estudiante.getId()),
+                                            estudiante.getEmail(),
+                                            "",
+                                            estudiante.getNombre_completo()
+                                    );
+
+                            _db.GuardarSessionUsuario(user);
+
                             Toast.makeText(getApplicationContext(),"Se loguea coool desde el api",Toast.LENGTH_LONG).show();
                             startActivity(new Intent(getApplicationContext(),JuegosActivity.class));
                         }

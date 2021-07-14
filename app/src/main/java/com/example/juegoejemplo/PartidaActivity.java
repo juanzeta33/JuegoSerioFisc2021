@@ -2,6 +2,7 @@ package com.example.juegoejemplo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import com.example.juegoejemplo.Datos.DbProccess;
 import com.example.juegoejemplo.Entidades.Partida;
 import com.example.juegoejemplo.Entidades.Preguntas;
 import com.example.juegoejemplo.Entidades.Respuestas;
+import com.example.juegoejemplo.Entidades.Usuarios;
 import com.example.juegoejemplo.Services.ApiService;
 import com.google.android.material.timepicker.TimeFormat;
 
@@ -39,8 +41,9 @@ public class PartidaActivity extends AppCompatActivity {
     TextView nivel,tipo,pregunta;
 
     DbProccess _db;
-    int _numPartida = 1;
-    String _jugador = "Jz666";
+    int _numPartida = 0;
+    String _jugador = "";
+    String _juego = "";
 
     List<String> _selectedCheckboxs = new ArrayList<>();
 
@@ -50,11 +53,20 @@ public class PartidaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_partida);
 
         _db = new DbProccess(getApplicationContext());
-        //Calcular el numero de partida y setearla sobre la variable global _numPartida;
-        //Obtener el jugador en base al estudiante logueado
+
+        Intent i = getIntent();
+        _juego = i.getStringExtra("Juego");
+        _numPartida = _db.ObtenerSiguientePartida(_juego);
+
+        ObtenerUsuarioSession();
 
         InicializarControles();
         ObtenerPreguntas();
+    }
+
+    private void ObtenerUsuarioSession() {
+        Usuarios user = _db.ObtenerUsuarioSession();
+        _jugador = user.getNombre();
     }
 
     private void ObtenerPreguntas() {
@@ -104,21 +116,23 @@ public class PartidaActivity extends AppCompatActivity {
     private void RenderPregunta(Preguntas preguntaAnterior){
         int indiceActual = _preguntas.indexOf(preguntaAnterior);
 
-        if(indiceActual == _preguntas.size()){
-            //aqui abrimos activity de Resumen de respuestas
-        }
+        if(indiceActual == _preguntas.size() - 1){
+            Intent i = new Intent(getApplicationContext(),ResumenActivity.class);
+            i.putExtra("Partida",_numPartida);
+            startActivity(i);
+        }else{
+            _preguntaActual = _preguntas.get(_preguntas.indexOf(preguntaAnterior)+1);
 
-        _preguntaActual = _preguntas.get(_preguntas.indexOf(preguntaAnterior)+1);
+            pregunta.setText(_preguntaActual.getPregunta());
+            tipo.setText(_preguntaActual.getTipo());
 
-        pregunta.setText(_preguntaActual.getPregunta());
-        tipo.setText(_preguntaActual.getTipo());
-
-        if (_preguntaActual.getTipo_pregunta_id().equals("2")){
-            RenderPreguntaOpcionMultiple(_preguntaActual);
-        }else if(_preguntaActual.getTipo_pregunta_id().equals("3")){
-            RenderPreguntaVF(_preguntaActual);
-        }else if(_preguntaActual.getTipo_pregunta_id().equals("4")){
-            RenderPreguntaMejorOpcion(_preguntaActual);
+            if (_preguntaActual.getTipo_pregunta_id().equals("2")){
+                RenderPreguntaOpcionMultiple(_preguntaActual);
+            }else if(_preguntaActual.getTipo_pregunta_id().equals("3")){
+                RenderPreguntaVF(_preguntaActual);
+            }else if(_preguntaActual.getTipo_pregunta_id().equals("4")){
+                RenderPreguntaMejorOpcion(_preguntaActual);
+            }
         }
     }
 
@@ -290,7 +304,7 @@ public class PartidaActivity extends AppCompatActivity {
             Partida respuesta = new Partida();
             respuesta.setPartida(_numPartida);
             respuesta.setJugador(_jugador);
-            respuesta.setJuego("PHP Higher");
+            respuesta.setJuego(_juego);
             respuesta.setNivel(pregunta.getNivel());
             respuesta.setPregunta(pregunta.getPregunta());
             respuesta.setRespuestas(respuestas);
@@ -302,7 +316,7 @@ public class PartidaActivity extends AppCompatActivity {
 
             int d = 1;
             _selectedCheckboxs.clear();
-            //_db.InsentarRespuestaPartida(respuesta,_numPartida);
+            _db.InsentarRespuestaPartida(respuesta,_numPartida);
         }catch (Exception e){
             int x = 1;
         }

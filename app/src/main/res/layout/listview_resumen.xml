@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:gravity="start"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/lslblPregunta"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:maxLines="20"
+        android:layout_weight="1"
+        android:ellipsize="none"
+        android:padding="10dp"
+        android:scrollHorizontally="false"
+        android:text="However, if your application uses the same address for all of its emails, it can become cumbersome to call the from method in each mailable class you generate. Instead, you may specify a global "/>
+
+    <TextView
+        android:id="@+id/lslblRespuesta"
+        android:layout_toRightOf="@id/lslblPregunta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:padding="10dp"
+        android:text="Pregunta"/>
+
+    <TextView
+        android:id="@+id/lslblPuntaje"
+        android:layout_toRightOf="@id/lslblRespuesta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:padding="10dp"
+        android:text="Pregunta"/>
+
+    <TextView
+        android:id="@+id/lslblHora"
+        android:layout_toRightOf="@id/lslblPuntaje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:padding="10dp"
+        android:text="Pregunta"/>
+</RelativeLayout>
