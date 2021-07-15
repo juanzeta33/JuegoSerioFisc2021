@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/lslblPartida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:padding="10dp"
+        android:text="1"/>
+
+
+    <TextView
+        android:id="@+id/lslblJuego"
+        android:layout_toRightOf="@id/lslblPartida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:maxLines="20"
+        android:layout_weight="1"
+        android:ellipsize="none"
+        android:padding="10dp"
+        android:scrollHorizontally="false"
+        android:text="Juego"/>
+
+    <TextView
+        android:id="@+id/lslblJugador"
+        android:layout_below="@id/lslblPartida"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:padding="10dp"
+        android:text="Jugador"/>
+
+    <TextView
+        android:id="@+id/lslblNivel"
+        android:layout_below="@id/lslblJuego"
+        android:layout_toRightOf="@id/lslblJugador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:padding="10dp"
+        android:text="Nivel"/>
+
+    <TextView
+        android:id="@+id/lslblFecha"
+        android:layout_below="@id/lslblJugador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:padding="10dp"
+        android:text="Fecha"/>
+
+    <TextView
+        android:id="@+id/lslblPuntaje"
+        android:layout_toRightOf="@id/lslblFecha"
+        android:layout_below="@id/lslblNivel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:padding="10dp"
+        android:text="Puntaje"/>
+</RelativeLayout>

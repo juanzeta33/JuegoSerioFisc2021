@@ -3,6 +3,7 @@ package com.example.juegoejemplo.Services;
 import com.example.juegoejemplo.Entidades.Juego;
 import com.example.juegoejemplo.Entidades.Estudiante;
 import com.example.juegoejemplo.Entidades.Preguntas;
+import com.example.juegoejemplo.Entidades.Tabla;
 import com.example.juegoejemplo.Requests.PartidaRequest;
 import com.example.juegoejemplo.Responses.Facultad;
 
@@ -35,4 +36,7 @@ public interface ApiInterface {
 
     @GET("api.php?ep=preguntas")
     Call<List<Preguntas>> getPreguntas();
+
+    @GET("api.php?ep=posiciones")
+    Call<List<Tabla>> getAllTable();
 }

@@ -67,4 +67,8 @@ public class JuegosActivity extends AppCompatActivity {
         });
 
     }
+
+    public void VerTabla(View v){
+        startActivity(new Intent(getApplicationContext(),TablaActivity.class));
+    }
 }

@@ -49,7 +49,7 @@ public class ResumenActivity extends AppCompatActivity {
         request.setHora(partidas.get(0).getHora());
         request.setNivel(partidas.get(0).getNivel());
         request.setPartida(partidas.get(0).getPartida());
-        request.setPuntaje(partidas.get(0).getPuntaje());
+        request.setPuntaje(ObtenerPuntaje(partidas));
         request.setDetalle(partidas);
 
         Call<Integer> response = ApiService.getApiService().postRegistrarPartida(request);

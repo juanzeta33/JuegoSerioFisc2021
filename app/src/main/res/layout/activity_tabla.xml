@@ -4,18 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".JuegosActivity">
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Ver Tabla de Poscisiones"
-        android:onClick="VerTabla"/>
+    tools:context=".TablaActivity">
 
     <ListView
-        android:id="@+id/lstJuegos"
+        android:id="@+id/lstTabla"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-
 </LinearLayout>
