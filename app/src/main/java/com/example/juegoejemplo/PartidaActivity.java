@@ -44,6 +44,7 @@ public class PartidaActivity extends AppCompatActivity {
     int _numPartida = 0;
     String _jugador = "";
     String _juego = "";
+    int _juegoId = 0;
 
     List<String> _selectedCheckboxs = new ArrayList<>();
 
@@ -56,6 +57,7 @@ public class PartidaActivity extends AppCompatActivity {
 
         Intent i = getIntent();
         _juego = i.getStringExtra("Juego");
+        _juegoId = i.getIntExtra("JuegoID",0);
         _numPartida = _db.ObtenerSiguientePartida(_juego);
 
         ObtenerUsuarioSession();
@@ -70,7 +72,7 @@ public class PartidaActivity extends AppCompatActivity {
     }
 
     private void ObtenerPreguntas() {
-        Call<List<Preguntas>> response = ApiService.getApiService().getPreguntas();
+        Call<List<Preguntas>> response = ApiService.getApiService().getPreguntas(_juegoId);
         response.enqueue(new Callback<List<Preguntas>>() {
             @Override
             public void onResponse(Call<List<Preguntas>> call, Response<List<Preguntas>> response) {

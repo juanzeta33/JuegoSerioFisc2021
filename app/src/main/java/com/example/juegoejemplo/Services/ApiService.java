@@ -15,7 +15,7 @@ public class ApiService {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         httpClient.addInterceptor(logging);
 
-        String baseUrl = "http://zwestgroup-001-site3.gtempurl.com/";
+        String baseUrl = "http://192.168.100.6/pseudoapi/";
 
         if (API_SERVICE == null){
             Retrofit retrofit = new Retrofit.Builder()

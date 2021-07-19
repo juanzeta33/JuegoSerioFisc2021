@@ -40,8 +40,10 @@ public class JuegosActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String juego = _juegos.get(position).getNombre();
+                int juegoId = Integer.parseInt(_juegos.get(position).getId());
                 Intent i = new Intent(getApplicationContext(),PartidaActivity.class);
                 i.putExtra("Juego",juego);
+                i.putExtra("JuegoID",juegoId);
                 startActivity(i);
             }
         });
